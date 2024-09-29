@@ -3,24 +3,24 @@
 
 Simple Basic Mole game as first js project 
 
-features:
-fullscreen
-diffrent game section
-start game
-resume game
-restart game
-sound effects
-coin system
-high score system
-on local storage
+features: <br>
+fullscreen <br>
+diffrent game section <br>
+start game <br>
+resume game <br>
+restart game <br>
+sound effects <br>
+coin system <br>
+high score system <br>
+on local storage <br>
 
-Features which we are currently working:
-mole hitting effect
-store section =>
-buy with coin diffrent skins,sound effects,
-select skin
-deselect skin
-locked skin
-unlocked skin
-saving user prefrences
+Features which we are currently working: <br>
+mole hitting effect <br>
+store section =><br>
+buy with coin diffrent skins,sound effects, <br>
+select skin <br>
+deselect skin <br>
+locked skin <br>
+unlocked skin <br>
+saving user prefrences <br>
 
