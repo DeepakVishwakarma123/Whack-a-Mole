@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack a mole</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normal.css">
+    <link rel="icon" href="icon/mole.png">
+</head>
+<body class="bg-green-600">
+    <audio src="music/byte-blast-8-bit-arcade-music-background-music-for-video-208780.mp3" id="mainaudio" muted></audio>
+    <audio src="music/calling-whistle-41861.mp3" id="whistle"></audio>
+    <audio src="music/happy-pop-2-185287.mp3" id="popsong"></audio>
+    <div id="homeMenu" class="w-full h-screen grid">
+       <!-- acts as first row -->
+        <div id="firstRow" class="p-4 flex items-center">
+            <button class="btnstyle" id="btnfull"><img src="icon/fullscreen.png" width="40px"></button>
+        </div>
+        <!-- acts as second row -->
+         <div class="flex justify-center">
+           <div class="flex flex-col gap-4">
+               <div><img src="assets/whack-a-mole-champ-removebg-preview.png" width="1000px"></div>
+               <div class="flex justify-center gap-3">
+                <button id="playBtn" class="btnstyle">
+                    <img src="icon/play-button.png" width="50px">
+                </button>
+                <button class="btnstyle volbtn">
+                    <img src="icon/volume.png" width="50px"  class="hidden volumeon">
+                    <img src="icon/volume-mute.png" width="50px"   class="block volumeoff">
+                </button>
+               </div>
+           </div>
+         </div>
+    </div>
+    <!-- game main menu starts here -->
+     <div class="grid h-screen w-full" id="gameMenu" style="display: none;">
+       <!-- acts  first row -->
+        <div id="bg" class="bg-yellow-300 flex flex-col">
+            <!-- div for showing score time pause -->
+             <div class="flex justify-between">
+                <!-- clock and time -->
+                 <div class="flex gap-2">
+                    <img src="icon/timer.png" alt="clockIcon" width="50px">
+                    <p id="timeIndicator" class="font">25</p>
+                    <div class="flex">
+                     <img src="icon/rupee.png" alt="clockIcon" width="50px">
+                     <p id="coinindicator" class="font"></p>
+                 </div>
+                </div>
+                 <!-- score indicator -->
+                  <div><p id="showScore" class="font">0</p></div>
+                  <button class="border-[4px] shadow-md shadow-black border-black hidden" id="pausebtn"><img src="icon/pause-button.png" alt="pauseIcon" width="50px"></button>
+             </div>
+        </div>
+        <!-- acts as second row -->
+        <div class=" flex justify-center items-center">
+           <div class="allmoles">
+             <div class="flex gap-7" id="first3mole">
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+             </div>
+             <div class="flex gap-7" id="second3mole">
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+                <div id="pit" class="size-24 flex justify-center items-center" style="background-image: url('icon/hole.png');background-size: cover;background-repeat: no-repeat;"></div>
+             </div>
+            </div>
+        </div>
+        <!-- acts as third row -->
+        <div class="flex justify-center items-center p-2">
+            <div class="bg-yellow-950 border-[2px] rounded-lg border-black p-2" id="startmenu">
+                <div class="bg-yellow-400 border-[2.5px] rounded-lg border-black grid gap-2 p-1">
+                   <div class="grid grid-cols-2 gap-3">
+                     <div class="tutdiv">
+                        <img src="assets/simpleMole-removebg-preview.png" width="50px">
+                        <p class="tutfont">10 points</p>
+                     </div>
+                     <div class="tutdiv">
+                        <img src="assets/bomb-removebg-preview.png" width="30px">
+                        <p class="tutfont">-3 seconds</p>
+                     </div>
+                   </div>
+                   <div class="grid grid-cols-2 gap-3">
+                     <div class="tutdiv">
+                        <img src="assets/2.png" width="120px">
+                        <p class="tutfont">30 points+3s</p>
+                     </div>
+                     <div class="tutdiv">
+                        <img src="assets/1-removebg-preview.png" width="120px">
+                        <p class="tutfont">20 points</p>
+                     </div>
+                   </div>
+                   <div class="tutdiv p-4">
+                    <button class="btnstyle" id="playgame"><img src="icon/play-button.png" width="50px"></button>
+                   </div>
+                </div>
+            </div>
+            <!-- paused menu -->
+            <div class="p-2 bg-yellow-950 border-[2px] border-black rounded-md hidden" id="pauseMenu">
+                   <div class="grid bg-yellow-500 gap-5 rounded-md border[4px] p-3 border-black">
+                     <div class="tutdiv"><p class="font">PAUSED</p></div>
+                     <div class="flex justify-center items-center">
+                        <button class="btnstyle volbtn">
+                           <img src="icon/volume.png" width="50px"  class="hidden volumeon">
+                           <img src="icon/volume-mute.png" width="50px"   class="block volumeoff">
+                       </button>
+                     </div>
+                     <div class="flex gap-3">
+                        <button class="btnstyle" id="homebtn"><img src="icon/home.png" width="50px"></button>
+                        <button class="btnstyle" id="pauseplay"><img src="icon/play-button.png" width="50px"></button>
+                        <button class="btnstyle" id="restart"><img src="icon/refresh.png" width="50px"></button>
+                     </div>
+                   </div>
+            </div>
+            <div class="bg-yellow-950 p-2 border-[2px] border-black hidden" id="gameOvermenu">
+             <div class="bg-yellow-500 grid gap-5">
+                  <div class="flex justify-center items-center"><p class="font">GAME OVER</p></div>
+                  <div class="flex flex-col gap-3 justify-center items-center">
+                     <div class="flex gap-9">
+                        <p class="font">Score</p>
+                        <p class="font" id="scoreEle">200</p>
+                     </div>
+                     <div class="flex gap-9">
+                        <p class="font">Best Score</p>
+                        <p class="font" id="highScore">0</p>
+                     </div>
+                  </div>
+                  <div class="flex justify-center items-center gap-4">
+                     <button class="btnstyle">
+                        <img src="icon/home.png" alt="homeimage" width="50px">
+                     </button>
+                     <button class="btnstyle" id="refresh">
+                        <img src="icon/refresh.png" alt="homeimage" width="50px">
+                     </button>
+
+                  </div>
+             </div>
+            </div>
+        </div>
+        <!-- store section starts here acts as fourth row -->
+         </div>
+      <!-- <img id="hammer" src="assets/hammer-removebg-preview.png" alt="hammer"> -->
+    <script src="main.js"></script>
+</body>
+</html>
