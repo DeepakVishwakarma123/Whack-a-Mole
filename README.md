@@ -1,6 +1,6 @@
 # Whack-a-Mole 
 credit:ui desing layout:marketjs.com
-&#169 all rights reserved whitemerndevil since 1oct 2024
+(c) all rights reserved whitemerndevil since 1oct 2024
 
    <marquee>LIVE WEBSITE</marquee> 
    <br>
